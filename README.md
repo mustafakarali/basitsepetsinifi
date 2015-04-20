@@ -1,4 +1,3 @@
-/*
 * Tüm sepet işlemlerini içeren basit sepet sınıfı
 * @package sepet
 * @author Mustafa KARALI <justkarali@gmail.com>
@@ -19,7 +18,6 @@ KULLANIM:
 <strong>$sepet->toplam();</strong> Sepete eklediğiniz ürünlerin toplam adet sayısını öğrendiğimiz fonksiyon<br>
 <strong>$sepet->getir();</strong> Sepetinizde bulunan ürünleri dizi olarak döndürür Örnek: urun => adet<br>
 <strong>$sepet->debug();</strong> Sepetiniz ile ilgili debug işlemleri için fonksiyon<br>
-*/
 
 ÖRNEK:
 ------
