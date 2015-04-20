@@ -11,7 +11,7 @@ KULLANIM:
 <strong>$sepet = new sepet;</strong> Sınıfı başlat<br>
 <strong>$sepet->cerezKayit(true);</strong> Sepette çerez kullanıp kullanmayacağımızı belirleyelim.<br>
 <strong>$sepet->ekle('urun',adet);</strong> Sepete ekleme fonksiyonu<br>
-<strong>$sepet->sil('urun',adet);</strong> Adet bazında sepetten silme veya varolan ürünün adet sayısını düşürme fonksiyonu<br>
+<strong>$sepet->sil('urun',adet);</strong> Sepette varolan ürünün adet sayısını düşürme veya silme fonksiyonu<br>
 <strong>$sepet->guncelle('urun',adet);</strong> Adet bazında sepetteki ürünü güncelleme fonksiyonu <br>
 <strong>$sepet->urunSil('urun');</strong> Sepetten belirlediğiniz ürünü komple silme fonksiyonu<br>
 <strong>$sepet->temizle();</strong> Sepeti tamamen temizleme fonksiyonu<br>
