@@ -9,7 +9,7 @@
 
 KULLANIM:
 ---------
-$sepet = new sepet; Sınıfı başlat
+$sepet = new sepet; Sınıfı başlat<br>
 $sepet->cerezKayit(true); Sepette çerez kullanıp kullanmayacağımızı belirleyelim.
 $sepet->ekle('urun',adet); Sepete ekleme fonksiyonu
 $sepet->sil('urun',adet); Adet bazında sepetten silme veya varolan ürünün adet sayısını düşürme fonksiyonu 
