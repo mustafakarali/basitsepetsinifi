@@ -23,124 +23,126 @@ $sepet->debug(); Sepetiniz ile ilgili debug işlemleri için fonksiyon
 */
 class sepet
 {
-    public $cerezAdi	= 'sepetimiz';
-    public $cerezTarih	= 86400; // 1 Gün
-    public $cerezKayit	= true;
-	
-    function __construct()
-    {
-        session_start();
-        if(!isset($_SESSION[$this->cerezAdi]) && (isset($_COOKIE[$this->cerezAdi])))
+	public $cerezAdi	= 'sepetimiz';
+	public $cerezTarih	= 86400; // 1 Gün
+	public $cerezKayit	= true;
+
+	function __construct()
+	{
+		session_start();
+		if(!isset($_SESSION[$this->cerezAdi]) && (isset($_COOKIE[$this->cerezAdi])))
 		{
-            $_SESSION[$this->cerezAdi] = unserialize(base64_decode($_COOKIE[$this->cerezAdi]));
-        }
-    }
+			$_SESSION[$this->cerezAdi] = unserialize(base64_decode($_COOKIE[$this->cerezAdi]));
+		}
+	}
 	
-    function ekle($ID,$adet=1)
-    {
-        if(isset($_SESSION[$this->cerezAdi][$ID]))
+	function ekle($ID,$adet=1)
+	{
+		if(isset($_SESSION[$this->cerezAdi][$ID]))
 		{
-            $_SESSION[$this->cerezAdi][$ID] = $_SESSION[$this->cerezAdi][$ID] + $adet;
-        }
+			$_SESSION[$this->cerezAdi][$ID] = $_SESSION[$this->cerezAdi][$ID] + $adet;
+		}
 		else
 		{
-            $_SESSION[$this->cerezAdi][$ID] = $adet;
-        }
-        $this->cerez();
-        return true;
+			$_SESSION[$this->cerezAdi][$ID] = $adet;
+		}
+		$this->cerez();
+		return true;
     }
 	
-    function sil($ID,$adet=1)
-    {
-        if(isset($_SESSION[$this->cerezAdi][$ID]))
+	function sil($ID,$adet=1)
+	{
+		if(isset($_SESSION[$this->cerezAdi][$ID]))
 		{
-            $_SESSION[$this->cerezAdi][$ID] = $_SESSION[$this->cerezAdi][$ID] - $adet;
+			$_SESSION[$this->cerezAdi][$ID] = $_SESSION[$this->cerezAdi][$ID] - $adet;
         }
-        if($_SESSION[$this->cerezAdi][$ID] <= 0)
+		
+		if($_SESSION[$this->cerezAdi][$ID] <= 0)
 		{
-            $this->urunSil($ID);
+			$this->urunSil($ID);
         }
-        $this->cerez();
-        return true;
-        exit();
+		$this->cerez();
+		return true;
+		exit();
+	}
+	
+	function urunSil($ID)
+	{
+		unset($_SESSION[$this->cerezAdi][$ID]);
+		$this->cerez();
+		return true;
+		exit();
     }
 	
-    function urunSil($ID)
-    {
-        unset($_SESSION[$this->cerezAdi][$ID]);
-        $this->cerez();
-        return true;
-        exit();
-    }
-	
-    function getir()
-    {
-        if(isset($_SESSION[$this->cerezAdi])) {
-            foreach ($_SESSION[$this->cerezAdi] as $k => $v)
+	function getir()
+	{
+		if(isset($_SESSION[$this->cerezAdi]))
+		{
+			foreach ($_SESSION[$this->cerezAdi] as $k => $v)
 			{
-                $urunler[$k] = $v;
-            }
-            return $urunler;
-            exit();
-        }
+				$urunler[$k] = $v;
+			}
+			return $urunler;
+			exit();
+		}
 		else
 		{
-            return false;
-        }
-    }
+			return false;
+		}
+	}
 	
-    function guncelle($ID,$adet)
-    {
-        $adet = ($adet == '') ? 0 : $adet;
-        if(isset($_SESSION[$this->cerezAdi][$ID]))
+	function guncelle($ID,$adet)
+	{
+		$adet = ($adet == '') ? 0 : $adet;
+		if(isset($_SESSION[$this->cerezAdi][$ID]))
 		{
-            $_SESSION[$this->cerezAdi][$ID] = $adet;
-            if($_SESSION[$this->cerezAdi][$ID] <= 0)
+			$_SESSION[$this->cerezAdi][$ID] = $adet;
+			if($_SESSION[$this->cerezAdi][$ID] <= 0)
 			{
-                $this->urunSil($ID);
-                return true;
-                exit();
-            }
+				$this->urunSil($ID);
+				return true;
+				exit();
+			}
 			else
 			{
 				$this->cerez();
 				return true;
 				exit();
 			}
-        }
+		}
 		else
 		{
-            return false;
-        }
-    }
+			return false;
+		}
+	}
 	
-    function toplam()
-    {
-        if(isset($_SESSION[$this->cerezAdi]))
+	function toplam()
+	{
+		if(isset($_SESSION[$this->cerezAdi]))
 		{
-            $adet = 0;
-            foreach ($_SESSION[$this->cerezAdi] as $icerik)
+			$adet = 0;
+			foreach ($_SESSION[$this->cerezAdi] as $icerik)
 			{
-                $adet += $icerik;
-            }
-            return $adet;
-        }
+				$adet += $icerik;
+			}
+			return $adet;
+		}
 		else
 		{
-            return 0;
-        }
-    }
+			return 0;
+		}
+	}
 	
-    function temizle()
-    {
-        unset($_SESSION[$this->cerezAdi]);
-        $this->cerez();
-        return true;
-    }
+	function temizle()
+	{
+		unset($_SESSION[$this->cerezAdi]);
+		$this->cerez();
+		return true;
+	}
 	
-    function cerez()
-    {
-        if($this->cerezKayit)
+	function cerez()
+	{
+		if($this->cerezKayit)
 		{
 			if(isset($_SESSION[$this->cerezAdi]))
 			{
@@ -152,24 +154,24 @@ class sepet
 			{
 				return false;
 			}
-        }
+		}
 		else
 		{
-        	return false;
+			return false;
 		}
-    }
+	}
 	
-    function cerezKayit($deger=true)
-    {
-        $this->cerezKayit = $deger;
-        return true;
-    }
+	function cerezKayit($deger=true)
+	{
+		$this->cerezKayit = $deger;
+		return true;
+	}
 	
-    function debug($deger)
-    {
+	function debug($deger)
+	{
 		echo "<pre>";
-        print_r($deger);
+		print_r($deger);
 		echo "</pre>";
-    }
+	}
 }
 ?>
