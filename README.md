@@ -9,30 +9,30 @@
 
 KULLANIM:
 ---------
-$sepet = new sepet; Sınıfı başlat<br>
-$sepet->cerezKayit(true); Sepette çerez kullanıp kullanmayacağımızı belirleyelim.
-$sepet->ekle('urun',adet); Sepete ekleme fonksiyonu
-$sepet->sil('urun',adet); Adet bazında sepetten silme veya varolan ürünün adet sayısını düşürme fonksiyonu 
-$sepet->guncelle('urun',adet); Adet bazında sepetteki ürünü güncelleme fonksiyonu 
-$sepet->urunSil('urun'); Sepetten belirlediğiniz ürünü komple silme fonksiyonu
-$sepet->temizle(); Sepeti tamamen temizleme fonksiyonu
-$sepet->toplam(); Sepete eklediğiniz ürünlerin toplam adet sayısını öğrendiğimiz fonksiyon
-$sepet->getir(); Sepetinizde bulunan ürünleri dizi olarak döndürür Örnek: urun => adet
-$sepet->debug(); Sepetiniz ile ilgili debug işlemleri için fonksiyon
+<strong>$sepet = new sepet;</strong> Sınıfı başlat<br>
+<strong>$sepet->cerezKayit(true);</strong> Sepette çerez kullanıp kullanmayacağımızı belirleyelim.<br>
+<strong>$sepet->ekle('urun',adet);</strong> Sepete ekleme fonksiyonu<br>
+<strong>$sepet->sil('urun',adet);</strong> Adet bazında sepetten silme veya varolan ürünün adet sayısını düşürme fonksiyonu<br>
+<strong>$sepet->guncelle('urun',adet);</strong> Adet bazında sepetteki ürünü güncelleme fonksiyonu <br>
+<strong>$sepet->urunSil('urun');</strong> Sepetten belirlediğiniz ürünü komple silme fonksiyonu<br>
+<strong>$sepet->temizle();</strong> Sepeti tamamen temizleme fonksiyonu<br>
+<strong>$sepet->toplam();</strong> Sepete eklediğiniz ürünlerin toplam adet sayısını öğrendiğimiz fonksiyon<br>
+<strong>$sepet->getir();</strong> Sepetinizde bulunan ürünleri dizi olarak döndürür Örnek: urun => adet<br>
+<strong>$sepet->debug();</strong> Sepetiniz ile ilgili debug işlemleri için fonksiyon<br>
 */
 
 ÖRNEK:
 ------
-include "sepet.class.php";
-$sepet = new sepet;
-$sepet->cerezKayit(true);
-$sepet->ekle('urun',5);
-$sepet->ekle('urun1',5);
-$sepet->ekle('urun2',5);
-$sepet->ekle('urun3',5);
-$sepet->guncelle('urun3',2);
-$sepet->sil('urun',1);
-$sepet->urunSil('urun');
-//$sepet->temizle(); // Açarsanız sepeti boşaltır. Sınıfı denemek için önce kapatın, sonra açıp komple sepetin temizlendiğini göreceksiniz.
-$sepet->debug($sepet->toplam());
-$sepet->debug($sepet->getir());
+include "sepet.class.php";<br>
+$sepet = new sepet;<br>
+$sepet->cerezKayit(true);<br>
+$sepet->ekle('urun',5);<br>
+$sepet->ekle('urun1',5);<br>
+$sepet->ekle('urun2',5);<br>
+$sepet->ekle('urun3',5);<br>
+$sepet->guncelle('urun3',2);<br>
+$sepet->sil('urun',1);<br>
+$sepet->urunSil('urun');<br>
+//$sepet->temizle(); // Açarsanız sepeti boşaltır. Sınıfı denemek için önce kapatın, sonra açıp komple sepetin temizlendiğini göreceksiniz.<br>
+$sepet->debug($sepet->toplam());<br>
+$sepet->debug($sepet->getir());<br>
